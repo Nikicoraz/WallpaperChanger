@@ -4,7 +4,6 @@ namespace WallpaperChanger
 {
     public partial class Form1 : Form
     {
-        
         private void Form1_Load(object sender, EventArgs e)
         {
             ore_mattina.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.ORE_MATTINA) ?? "0");
@@ -28,7 +27,6 @@ namespace WallpaperChanger
         {
             Settings.ChangeSetting(Settings.SettingName.ORE_MATTINA, Convert.ToString(CheckMax(ore_mattina.Value, 23)));
         }
-
         private void minuti_mattina_ValueChanged(object sender, EventArgs e)
         {
             Settings.ChangeSetting(Settings.SettingName.MINUTI_MATTINA, Convert.ToString(CheckMax(minuti_mattina.Value, 59)));
@@ -65,8 +63,8 @@ namespace WallpaperChanger
                 DialogResult result = fbd.ShowDialog();
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
                 {
-                    t_luce.Text = fbd.SelectedPath;
-                    Settings.ChangeSetting(Settings.SettingName.WALLPAPER_LUCE_PATH, fbd.SelectedPath);
+                    t_buio.Text = fbd.SelectedPath;
+                    Settings.ChangeSetting(Settings.SettingName.WALLPAPER_BUIO_PATH, fbd.SelectedPath);
                 }
             }
         }
@@ -79,6 +77,11 @@ namespace WallpaperChanger
         private void t_buio_TextChanged(object sender, EventArgs e)
         {
             Settings.ChangeSetting(Settings.SettingName.WALLPAPER_BUIO_PATH, t_buio.Text);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LogicaWallpaper.exit = true;
         }
     }
 }
