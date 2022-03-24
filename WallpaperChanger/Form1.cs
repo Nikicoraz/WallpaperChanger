@@ -78,10 +78,24 @@ namespace WallpaperChanger
         {
             Settings.ChangeSetting(Settings.SettingName.WALLPAPER_BUIO_PATH, t_buio.Text);
         }
-
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIcon1.Visible = true;
+            }
+        }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             LogicaWallpaper.exit = true;
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            notifyIcon1.Visible = false;
+            WindowState = FormWindowState.Normal;
         }
     }
 }

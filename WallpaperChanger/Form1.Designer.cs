@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.c_orari = new System.Windows.Forms.GroupBox();
             this.l_mattina = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -47,6 +49,7 @@
             this.l_luce = new System.Windows.Forms.Label();
             this.choose_luce = new System.Windows.Forms.Button();
             this.t_luce = new System.Windows.Forms.TextBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.c_orari.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minuti_mattina)).BeginInit();
@@ -80,6 +83,7 @@
             this.c_orari.TabIndex = 1;
             this.c_orari.TabStop = false;
             this.c_orari.Text = "ORARI";
+            this.c_orari.Resize += new System.EventHandler(this.Form1_Resize);
             // 
             // l_mattina
             // 
@@ -326,6 +330,13 @@
             this.t_luce.TabIndex = 0;
             this.t_luce.TextChanged += new System.EventHandler(this.t_luce_TextChanged);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Wallpaper Changer";
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -337,6 +348,7 @@
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.c_orari.ResumeLayout(false);
             this.c_orari.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -382,5 +394,6 @@
         private Label l_buio;
         private Button choose_buio;
         private TextBox t_buio;
+        private NotifyIcon notifyIcon1;
     }
 }

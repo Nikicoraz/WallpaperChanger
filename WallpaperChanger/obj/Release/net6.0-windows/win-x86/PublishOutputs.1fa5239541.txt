@@ -1,0 +1,2 @@
+D:\Programmazione\repos\WallpaperChanger\WallpaperChanger\bin\Release\net6.0-windows\publish\win-x86\WallpaperChanger.pdb
+D:\Programmazione\repos\WallpaperChanger\WallpaperChanger\bin\Release\net6.0-windows\publish\win-x86\WallpaperChanger.exe
