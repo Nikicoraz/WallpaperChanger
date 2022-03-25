@@ -18,20 +18,20 @@ namespace WallpaperChanger
         {
             return _settings[(int)setting] != DEFAULT_CHAR ? _settings[(int)setting] : null;
         }
-        public static int LoadSettings()
+        public static void LoadSettings()
         {
             int settingsCount = Enum.GetNames(typeof(SettingName)).Length;
-            if (!File.Exists(Constants.SETTINGS_PATH))
+            int lines = 0;
+            if (!File.Exists(Constants.SETTINGS_PATH) || (lines = File.ReadAllLines(Constants.SETTINGS_PATH).Length) < settingsCount)
             {
                 Directory.CreateDirectory(Constants.APPLICATION_FOLDER);
-                StreamWriter sw = File.CreateText(Constants.SETTINGS_PATH);
+                StreamWriter sw = File.AppendText(Constants.SETTINGS_PATH);
                 string[] settingsName = Enum.GetNames(typeof(SettingName));
-                for (int i = 0; i < settingsCount; i++)
+                for (int i = lines; i < settingsCount; i++)
                 {
                     sw.WriteLine(settingsName[i] + SEPARATOR + DEFAULT_CHAR);
                 }
                 sw.Close();
-                return 1;
             }
             StreamReader sr = File.OpenText(Constants.SETTINGS_PATH);
             for(int i = 0; i < settingsCount; i++)
@@ -39,7 +39,6 @@ namespace WallpaperChanger
                 _settings[i] = sr.ReadLine().Split(SEPARATOR, StringSplitOptions.None)[1];
             }
             sr.Close();
-            return 0;
         }
         public enum SettingName : int
         {
@@ -48,7 +47,8 @@ namespace WallpaperChanger
             ORE_SERA,
             MINUTI_SERA,
             WALLPAPER_LUCE_PATH,
-            WALLPAPER_BUIO_PATH
+            WALLPAPER_BUIO_PATH,
+            TEMPO_CAMBIO
         }
         public static int ChangeSetting(SettingName setting, string value)
         {

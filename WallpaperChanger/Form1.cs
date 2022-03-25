@@ -4,15 +4,6 @@ namespace WallpaperChanger
 {
     public partial class Form1 : Form
     {
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            ore_mattina.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.ORE_MATTINA) ?? "0");
-            minuti_mattina.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.MINUTI_MATTINA) ?? "0");
-            ore_sera.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.ORE_SERA) ?? "0");
-            minuti_sera.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.MINUTI_SERA) ?? "0");
-            t_luce.Text = Settings.GetSetting(Settings.SettingName.WALLPAPER_LUCE_PATH) ?? "";
-            t_buio.Text = Settings.GetSetting(Settings.SettingName.WALLPAPER_BUIO_PATH) ?? "";
-        }
         public decimal CheckMax(decimal num, decimal max)
         {
             return num > max ? max : num;
@@ -22,7 +13,10 @@ namespace WallpaperChanger
             InitializeComponent();
         }
 
+        //
         // ---- MINUTI E ORE SERA ----
+        //
+
         private void ore_mattina_ValueChanged(object sender, EventArgs e)
         {
             Settings.ChangeSetting(Settings.SettingName.ORE_MATTINA, Convert.ToString(CheckMax(ore_mattina.Value, 23)));
@@ -41,7 +35,9 @@ namespace WallpaperChanger
             Settings.ChangeSetting(Settings.SettingName.MINUTI_SERA, Convert.ToString(CheckMax(minuti_sera.Value, 23)));
         }
 
+        //
         // ---- DIRECTORY WALLPAPER ----
+        //
 
         private void choose_luce_Click(object sender, EventArgs e)
         {
@@ -78,6 +74,25 @@ namespace WallpaperChanger
         {
             Settings.ChangeSetting(Settings.SettingName.WALLPAPER_BUIO_PATH, t_buio.Text);
         }
+        private void t_cambio_ValueChanged(object sender, EventArgs e)
+        {
+            Settings.ChangeSetting(Settings.SettingName.TEMPO_CAMBIO, t_cambio.Value.ToString());
+        }
+
+        //
+        // ---- AZIONI FORM ----
+        //
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ore_mattina.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.ORE_MATTINA) ?? "0");
+            minuti_mattina.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.MINUTI_MATTINA) ?? "0");
+            ore_sera.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.ORE_SERA) ?? "0");
+            minuti_sera.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.MINUTI_SERA) ?? "0");
+            t_luce.Text = Settings.GetSetting(Settings.SettingName.WALLPAPER_LUCE_PATH) ?? "";
+            t_buio.Text = Settings.GetSetting(Settings.SettingName.WALLPAPER_BUIO_PATH) ?? "";
+            t_cambio.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.TEMPO_CAMBIO) ?? "10");
+        }
         private void Form1_Resize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Minimized)
@@ -90,12 +105,12 @@ namespace WallpaperChanger
         {
             LogicaWallpaper.exit = true;
         }
-
-        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        private void notifyIcon1_MouseClick(object sender, EventArgs e)
         {
             Show();
             notifyIcon1.Visible = false;
             WindowState = FormWindowState.Normal;
         }
+
     }
 }

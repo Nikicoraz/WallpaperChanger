@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.c_orari = new System.Windows.Forms.GroupBox();
+            this.l_cambio = new System.Windows.Forms.Label();
+            this.t_cambio = new System.Windows.Forms.NumericUpDown();
             this.l_mattina = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.minuti_mattina = new System.Windows.Forms.NumericUpDown();
@@ -51,6 +53,7 @@
             this.t_luce = new System.Windows.Forms.TextBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.c_orari.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.t_cambio)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minuti_mattina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ore_mattina)).BeginInit();
@@ -71,6 +74,8 @@
             // 
             // c_orari
             // 
+            this.c_orari.Controls.Add(this.l_cambio);
+            this.c_orari.Controls.Add(this.t_cambio);
             this.c_orari.Controls.Add(this.l_mattina);
             this.c_orari.Controls.Add(this.tableLayoutPanel1);
             this.c_orari.Controls.Add(this.l_sera);
@@ -84,6 +89,42 @@
             this.c_orari.TabStop = false;
             this.c_orari.Text = "ORARI";
             this.c_orari.Resize += new System.EventHandler(this.Form1_Resize);
+            // 
+            // l_cambio
+            // 
+            this.l_cambio.AutoSize = true;
+            this.l_cambio.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.l_cambio.Location = new System.Drawing.Point(526, 116);
+            this.l_cambio.Name = "l_cambio";
+            this.l_cambio.Size = new System.Drawing.Size(142, 28);
+            this.l_cambio.TabIndex = 6;
+            this.l_cambio.Text = "Minuti Cambio";
+            // 
+            // t_cambio
+            // 
+            this.t_cambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.t_cambio.Font = new System.Drawing.Font("Noto Mono", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.t_cambio.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.t_cambio.Location = new System.Drawing.Point(526, 165);
+            this.t_cambio.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.t_cambio.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.t_cambio.Name = "t_cambio";
+            this.t_cambio.Size = new System.Drawing.Size(138, 35);
+            this.t_cambio.TabIndex = 5;
+            this.t_cambio.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.t_cambio.ValueChanged += new System.EventHandler(this.t_cambio_ValueChanged);
             // 
             // l_mattina
             // 
@@ -102,7 +143,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.minuti_mattina, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ore_mattina, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 102);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 101);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -332,10 +373,9 @@
             // 
             // notifyIcon1
             // 
-            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Wallpaper Changer";
-            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_MouseClick);
             // 
             // Form1
             // 
@@ -344,13 +384,15 @@
             this.ClientSize = new System.Drawing.Size(723, 450);
             this.Controls.Add(this.c_orari);
             this.Controls.Add(this.c_wallpaper);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Wallpaper Changer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.c_orari.ResumeLayout(false);
             this.c_orari.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.t_cambio)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.minuti_mattina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ore_mattina)).EndInit();
@@ -395,5 +437,7 @@
         private Button choose_buio;
         private TextBox t_buio;
         private NotifyIcon notifyIcon1;
+        private Label l_cambio;
+        private NumericUpDown t_cambio;
     }
 }

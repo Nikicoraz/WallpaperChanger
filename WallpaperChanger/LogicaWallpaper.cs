@@ -17,15 +17,18 @@ namespace WallpaperChanger
         }
         private static void CambiaDesktop(Modo modo)
         {
-            if(DateTime.Now - ultimoCambiamento < TimeSpan.FromMinutes(10) || 
+            if(DateTime.Now - ultimoCambiamento < TimeSpan.FromMinutes(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.TEMPO_CAMBIO))) || 
                 Settings.GetSetting(modo == Modo.light ? Settings.SettingName.WALLPAPER_LUCE_PATH : Settings.SettingName.WALLPAPER_BUIO_PATH) == null)
             {
                 return;
             }
             string path = Settings.GetSetting(modo == Modo.light ? Settings.SettingName.WALLPAPER_LUCE_PATH : Settings.SettingName.WALLPAPER_BUIO_PATH) ?? "";
-            string[] files = Directory.EnumerateFiles(path, "*.*").Where(file => file.ToLower().EndsWith("png") || file.ToLower().EndsWith("jpg"))
-                .ToArray();
-            WallpaperManager.Set(files[precedente++ % files.Length], WallpaperManager.Style.Stretched);
+            if (!String.IsNullOrEmpty(path))
+            {
+                string[] files = Directory.EnumerateFiles(path, "*.*").Where(file => file.ToLower().EndsWith("png") || file.ToLower().EndsWith("jpg"))
+                    .ToArray();
+                WallpaperManager.Set(files[precedente++ % files.Length], WallpaperManager.Style.Stretched);
+            }
             ultimoCambiamento = DateTime.Now;
         }
         public static void Start()
@@ -56,7 +59,7 @@ namespace WallpaperChanger
                     {
                         CambiaDesktop(Modo.light);
                     }
-                    Thread.Sleep(5000);
+                    Thread.Sleep(2000);
                 }
             }).Start();
         }
