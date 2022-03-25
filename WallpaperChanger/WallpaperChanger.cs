@@ -49,6 +49,7 @@ namespace WallpaperChanger
             }
 
             SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, tempPath, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+            img.Dispose();
         }
     }
 }
