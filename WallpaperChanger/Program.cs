@@ -7,6 +7,7 @@ namespace WallpaperChanger
     {
         public static string APPLICATION_FOLDER = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"Low\NikiIncFaGiochiDaSchifo\WallpaperChanger\";
         public static string SETTINGS_PATH = APPLICATION_FOLDER + @"settings.settings";
+        public static string APPLICATION_NAME = "WallpaperChanger";
         
     }
     public static class Settings

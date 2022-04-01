@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.c_orari = new System.Windows.Forms.GroupBox();
+            this.startup = new System.Windows.Forms.CheckBox();
             this.l_cambio = new System.Windows.Forms.Label();
             this.t_cambio = new System.Windows.Forms.NumericUpDown();
             this.l_mattina = new System.Windows.Forms.Label();
@@ -74,6 +75,7 @@
             // 
             // c_orari
             // 
+            this.c_orari.Controls.Add(this.startup);
             this.c_orari.Controls.Add(this.l_cambio);
             this.c_orari.Controls.Add(this.t_cambio);
             this.c_orari.Controls.Add(this.l_mattina);
@@ -90,11 +92,23 @@
             this.c_orari.Text = "ORARI";
             this.c_orari.Resize += new System.EventHandler(this.Form1_Resize);
             // 
+            // startup
+            // 
+            this.startup.AutoSize = true;
+            this.startup.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.startup.Location = new System.Drawing.Point(517, 182);
+            this.startup.Name = "startup";
+            this.startup.Size = new System.Drawing.Size(158, 60);
+            this.startup.TabIndex = 7;
+            this.startup.Text = "Start on\r\nsystem startup";
+            this.startup.UseVisualStyleBackColor = true;
+            this.startup.CheckedChanged += new System.EventHandler(this.startup_CheckedChanged);
+            // 
             // l_cambio
             // 
             this.l_cambio.AutoSize = true;
             this.l_cambio.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.l_cambio.Location = new System.Drawing.Point(526, 116);
+            this.l_cambio.Location = new System.Drawing.Point(527, 52);
             this.l_cambio.Name = "l_cambio";
             this.l_cambio.Size = new System.Drawing.Size(142, 28);
             this.l_cambio.TabIndex = 6;
@@ -105,7 +119,7 @@
             this.t_cambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.t_cambio.Font = new System.Drawing.Font("Noto Mono", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.t_cambio.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.t_cambio.Location = new System.Drawing.Point(526, 165);
+            this.t_cambio.Location = new System.Drawing.Point(527, 101);
             this.t_cambio.Maximum = new decimal(new int[] {
             120,
             0,
@@ -439,5 +453,6 @@
         private NotifyIcon notifyIcon1;
         private Label l_cambio;
         private NumericUpDown t_cambio;
+        private CheckBox startup;
     }
 }

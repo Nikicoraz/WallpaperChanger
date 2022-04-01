@@ -1,4 +1,5 @@
 using System.IO;
+using Microsoft.Win32;
 
 namespace WallpaperChanger
 {
@@ -92,6 +93,8 @@ namespace WallpaperChanger
             t_luce.Text = Settings.GetSetting(Settings.SettingName.WALLPAPER_LUCE_PATH) ?? "";
             t_buio.Text = Settings.GetSetting(Settings.SettingName.WALLPAPER_BUIO_PATH) ?? "";
             t_cambio.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.TEMPO_CAMBIO) ?? "10");
+            startup.Checked = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", false)
+                .GetValue(Constants.APPLICATION_NAME) != null ?true : false;
         }
         private void Form1_Resize(object sender, EventArgs e)
         {
@@ -112,5 +115,21 @@ namespace WallpaperChanger
             WindowState = FormWindowState.Normal;
         }
 
+        //
+        // ---- AUTO STARTUP ----
+        //
+
+        private void startup_CheckedChanged(object sender, EventArgs e)
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (startup.Checked)
+            {
+                rk.SetValue(Constants.APPLICATION_NAME, Application.ExecutablePath);
+            }
+            else
+            {
+                rk.DeleteValue(Constants.APPLICATION_NAME);
+            }
+        }
     }
 }
