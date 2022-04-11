@@ -33,7 +33,7 @@ namespace WallpaperChanger
 
         private void minuti_sera_ValueChanged(object sender, EventArgs e)
         {
-            Settings.ChangeSetting(Settings.SettingName.MINUTI_SERA, Convert.ToString(CheckMax(minuti_sera.Value, 23)));
+            Settings.ChangeSetting(Settings.SettingName.MINUTI_SERA, Convert.ToString(CheckMax(minuti_sera.Value, 59)));
         }
 
         //
