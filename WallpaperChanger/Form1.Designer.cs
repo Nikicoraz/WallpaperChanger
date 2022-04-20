@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.c_orari = new System.Windows.Forms.GroupBox();
-            this.startup = new System.Windows.Forms.CheckBox();
-            this.l_cambio = new System.Windows.Forms.Label();
-            this.t_cambio = new System.Windows.Forms.NumericUpDown();
             this.l_mattina = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.minuti_mattina = new System.Windows.Forms.NumericUpDown();
@@ -42,6 +39,9 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.minuti_sera = new System.Windows.Forms.NumericUpDown();
             this.ore_sera = new System.Windows.Forms.NumericUpDown();
+            this.startup = new System.Windows.Forms.CheckBox();
+            this.l_cambio = new System.Windows.Forms.Label();
+            this.t_cambio = new System.Windows.Forms.NumericUpDown();
             this.c_wallpaper = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.c_buio = new System.Windows.Forms.SplitContainer();
@@ -53,14 +53,18 @@
             this.choose_luce = new System.Windows.Forms.Button();
             this.t_luce = new System.Windows.Forms.TextBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radCasuale = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radSequenziale = new System.Windows.Forms.RadioButton();
             this.c_orari.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.t_cambio)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minuti_mattina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ore_mattina)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minuti_sera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ore_sera)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.t_cambio)).BeginInit();
             this.c_wallpaper.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c_buio)).BeginInit();
@@ -71,74 +75,23 @@
             this.c_w_luce.Panel1.SuspendLayout();
             this.c_w_luce.Panel2.SuspendLayout();
             this.c_w_luce.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // c_orari
             // 
-            this.c_orari.Controls.Add(this.startup);
-            this.c_orari.Controls.Add(this.l_cambio);
-            this.c_orari.Controls.Add(this.t_cambio);
             this.c_orari.Controls.Add(this.l_mattina);
             this.c_orari.Controls.Add(this.tableLayoutPanel1);
             this.c_orari.Controls.Add(this.l_sera);
             this.c_orari.Controls.Add(this.tableLayoutPanel2);
-            this.c_orari.Dock = System.Windows.Forms.DockStyle.Top;
             this.c_orari.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.c_orari.Location = new System.Drawing.Point(0, 0);
             this.c_orari.Name = "c_orari";
-            this.c_orari.Size = new System.Drawing.Size(723, 287);
+            this.c_orari.Size = new System.Drawing.Size(324, 287);
             this.c_orari.TabIndex = 1;
             this.c_orari.TabStop = false;
             this.c_orari.Text = "ORARI";
             this.c_orari.Resize += new System.EventHandler(this.Form1_Resize);
-            // 
-            // startup
-            // 
-            this.startup.AutoSize = true;
-            this.startup.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.startup.Location = new System.Drawing.Point(517, 182);
-            this.startup.Name = "startup";
-            this.startup.Size = new System.Drawing.Size(158, 60);
-            this.startup.TabIndex = 7;
-            this.startup.Text = "Start on\r\nsystem startup";
-            this.startup.UseVisualStyleBackColor = true;
-            this.startup.CheckedChanged += new System.EventHandler(this.startup_CheckedChanged);
-            // 
-            // l_cambio
-            // 
-            this.l_cambio.AutoSize = true;
-            this.l_cambio.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.l_cambio.Location = new System.Drawing.Point(527, 52);
-            this.l_cambio.Name = "l_cambio";
-            this.l_cambio.Size = new System.Drawing.Size(142, 28);
-            this.l_cambio.TabIndex = 6;
-            this.l_cambio.Text = "Minuti Cambio";
-            // 
-            // t_cambio
-            // 
-            this.t_cambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.t_cambio.Font = new System.Drawing.Font("Noto Mono", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.t_cambio.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.t_cambio.Location = new System.Drawing.Point(527, 101);
-            this.t_cambio.Maximum = new decimal(new int[] {
-            120,
-            0,
-            0,
-            0});
-            this.t_cambio.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.t_cambio.Name = "t_cambio";
-            this.t_cambio.Size = new System.Drawing.Size(138, 35);
-            this.t_cambio.TabIndex = 5;
-            this.t_cambio.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.t_cambio.ValueChanged += new System.EventHandler(this.t_cambio_ValueChanged);
             // 
             // l_mattina
             // 
@@ -257,6 +210,54 @@
             this.ore_sera.Size = new System.Drawing.Size(137, 35);
             this.ore_sera.TabIndex = 0;
             this.ore_sera.ValueChanged += new System.EventHandler(this.ore_sera_ValueChanged);
+            // 
+            // startup
+            // 
+            this.startup.AutoSize = true;
+            this.startup.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.startup.Location = new System.Drawing.Point(225, 192);
+            this.startup.Name = "startup";
+            this.startup.Size = new System.Drawing.Size(158, 60);
+            this.startup.TabIndex = 7;
+            this.startup.Text = "Start on\r\nsystem startup";
+            this.startup.UseVisualStyleBackColor = true;
+            this.startup.CheckedChanged += new System.EventHandler(this.startup_CheckedChanged);
+            // 
+            // l_cambio
+            // 
+            this.l_cambio.AutoSize = true;
+            this.l_cambio.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.l_cambio.Location = new System.Drawing.Point(225, 52);
+            this.l_cambio.Name = "l_cambio";
+            this.l_cambio.Size = new System.Drawing.Size(152, 28);
+            this.l_cambio.TabIndex = 6;
+            this.l_cambio.Text = "Minuti Cambio";
+            // 
+            // t_cambio
+            // 
+            this.t_cambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.t_cambio.Font = new System.Drawing.Font("Noto Mono", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.t_cambio.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.t_cambio.Location = new System.Drawing.Point(232, 101);
+            this.t_cambio.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.t_cambio.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.t_cambio.Name = "t_cambio";
+            this.t_cambio.Size = new System.Drawing.Size(138, 35);
+            this.t_cambio.TabIndex = 5;
+            this.t_cambio.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.t_cambio.ValueChanged += new System.EventHandler(this.t_cambio_ValueChanged);
             // 
             // c_wallpaper
             // 
@@ -391,11 +392,64 @@
             this.notifyIcon1.Text = "Wallpaper Changer";
             this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_MouseClick);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radCasuale);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.radSequenziale);
+            this.groupBox1.Controls.Add(this.t_cambio);
+            this.groupBox1.Controls.Add(this.startup);
+            this.groupBox1.Controls.Add(this.l_cambio);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(330, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(387, 275);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Opzioni";
+            // 
+            // radCasuale
+            // 
+            this.radCasuale.AutoSize = true;
+            this.radCasuale.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radCasuale.Location = new System.Drawing.Point(34, 154);
+            this.radCasuale.Name = "radCasuale";
+            this.radCasuale.Size = new System.Drawing.Size(96, 29);
+            this.radCasuale.TabIndex = 10;
+            this.radCasuale.TabStop = true;
+            this.radCasuale.Text = "Casuale";
+            this.radCasuale.UseVisualStyleBackColor = true;
+            this.radCasuale.Click += new System.EventHandler(this.ModChange);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(56, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 28);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Modalità";
+            // 
+            // radSequenziale
+            // 
+            this.radSequenziale.AutoSize = true;
+            this.radSequenziale.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radSequenziale.Location = new System.Drawing.Point(34, 100);
+            this.radSequenziale.Name = "radSequenziale";
+            this.radSequenziale.Size = new System.Drawing.Size(132, 29);
+            this.radSequenziale.TabIndex = 8;
+            this.radSequenziale.TabStop = true;
+            this.radSequenziale.Text = "Sequenziale";
+            this.radSequenziale.UseVisualStyleBackColor = true;
+            this.radSequenziale.Click += new System.EventHandler(this.ModChange);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.c_orari);
             this.Controls.Add(this.c_wallpaper);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -406,13 +460,13 @@
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.c_orari.ResumeLayout(false);
             this.c_orari.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.t_cambio)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.minuti_mattina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ore_mattina)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.minuti_sera)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ore_sera)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.t_cambio)).EndInit();
             this.c_wallpaper.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.c_buio.Panel1.ResumeLayout(false);
@@ -425,6 +479,8 @@
             this.c_w_luce.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c_w_luce)).EndInit();
             this.c_w_luce.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -454,5 +510,9 @@
         private Label l_cambio;
         private NumericUpDown t_cambio;
         private CheckBox startup;
+        private GroupBox groupBox1;
+        private Label label1;
+        private RadioButton radSequenziale;
+        private RadioButton radCasuale;
     }
 }

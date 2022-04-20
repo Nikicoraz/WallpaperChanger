@@ -49,7 +49,8 @@ namespace WallpaperChanger
             MINUTI_SERA,
             WALLPAPER_LUCE_PATH,
             WALLPAPER_BUIO_PATH,
-            TEMPO_CAMBIO
+            TEMPO_CAMBIO,
+            MODALITA
         }
         public static int ChangeSetting(SettingName setting, string value)
         {

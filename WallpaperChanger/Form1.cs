@@ -95,6 +95,8 @@ namespace WallpaperChanger
             t_cambio.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.TEMPO_CAMBIO) ?? "10");
             startup.Checked = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", false)
                 .GetValue(Constants.APPLICATION_NAME) != null ?true : false;
+            radSequenziale.Checked = (LogicaWallpaper.Modalita)Convert.ToInt16(Settings.GetSetting(Settings.SettingName.MODALITA) ?? "0") == LogicaWallpaper.Modalita.SEQUENZIALE;
+            radCasuale.Checked = (LogicaWallpaper.Modalita)Convert.ToInt16(Settings.GetSetting(Settings.SettingName.MODALITA) ?? "0") == LogicaWallpaper.Modalita.CASUALE;
         }
         private void Form1_Resize(object sender, EventArgs e)
         {
@@ -129,6 +131,22 @@ namespace WallpaperChanger
             else
             {
                 rk.DeleteValue(Constants.APPLICATION_NAME);
+            }
+        }
+
+        //
+        // ---- MODALITA' ----
+        //
+
+        private void ModChange(object sender, EventArgs e)
+        {
+            if (radSequenziale.Checked)
+            {
+                Settings.ChangeSetting(Settings.SettingName.MODALITA, Convert.ToInt16(LogicaWallpaper.Modalita.SEQUENZIALE).ToString());
+            }
+            else
+            {
+                Settings.ChangeSetting(Settings.SettingName.MODALITA, Convert.ToInt16(LogicaWallpaper.Modalita.CASUALE).ToString());
             }
         }
     }

@@ -15,6 +15,12 @@ namespace WallpaperChanger
             light,
             dark
         }
+
+        public enum Modalita : int
+        {
+            SEQUENZIALE,
+            CASUALE
+        }
         private static void CambiaDesktop(Modo modo)
         {
             if(DateTime.Now - ultimoCambiamento < TimeSpan.FromMinutes(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.TEMPO_CAMBIO))) || 
@@ -27,7 +33,17 @@ namespace WallpaperChanger
             {
                 string[] files = Directory.EnumerateFiles(path, "*.*").Where(file => file.ToLower().EndsWith("png") || file.ToLower().EndsWith("jpg"))
                     .ToArray();
-                WallpaperManager.Set(files[precedente++ % files.Length], WallpaperManager.Style.Stretched);
+                if((Modalita)Convert.ToInt16(Settings.GetSetting(Settings.SettingName.MODALITA)) == Modalita.SEQUENZIALE)
+                {
+                    WallpaperManager.Set(files[precedente++ % files.Length], WallpaperManager.Style.Stretched);
+                }
+                else
+                {
+                    Random r = new();
+                    int num;
+                    while ((num = r.Next(0, files.Length)) == precedente) ;
+                    WallpaperManager.Set(files[num], WallpaperManager.Style.Stretched);
+                }
             }
             ultimoCambiamento = DateTime.Now;
         }
