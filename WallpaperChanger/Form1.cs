@@ -150,5 +150,25 @@ namespace WallpaperChanger
             }
         }
 
+        private void cambiaSfondo_Click(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            DateTime light = DateTime.Today;
+            DateTime dark = DateTime.Today;
+            dark = dark.AddHours(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.ORE_SERA)));
+            dark = dark.AddMinutes(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.MINUTI_SERA)));
+            light = light.AddHours(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.ORE_MATTINA)));
+            light = light.AddMinutes(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.MINUTI_MATTINA)));
+            // Dark
+            if (now > dark || now < light)
+            {
+                LogicaWallpaper.CambiaDesktop(LogicaWallpaper.Modo.dark, true);
+            }
+            // Light
+            else
+            {
+                LogicaWallpaper.CambiaDesktop(LogicaWallpaper.Modo.light, true);
+            }
+        }
     }
 }

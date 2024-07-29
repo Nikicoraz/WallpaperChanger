@@ -10,7 +10,7 @@ namespace WallpaperChanger
         public static bool exit = false;
         static DateTime? ultimoCambiamento = DateTime.Now;
         static int precedente = 0;
-        enum Modo
+        public enum Modo
         {
             light,
             dark
@@ -21,9 +21,9 @@ namespace WallpaperChanger
             SEQUENZIALE,
             CASUALE
         }
-        private static void CambiaDesktop(Modo modo)
+        public static void CambiaDesktop(Modo modo, bool forced = false)
         {
-            if(DateTime.Now - ultimoCambiamento < TimeSpan.FromMinutes(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.TEMPO_CAMBIO))) || 
+            if(!forced && DateTime.Now - ultimoCambiamento < TimeSpan.FromMinutes(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.TEMPO_CAMBIO))) || 
                 Settings.GetSetting(modo == Modo.light ? Settings.SettingName.WALLPAPER_LUCE_PATH : Settings.SettingName.WALLPAPER_BUIO_PATH) == null)
             {
                 return;

@@ -54,6 +54,7 @@
             t_luce = new TextBox();
             notifyIcon1 = new NotifyIcon(components);
             groupBox1 = new GroupBox();
+            cambiaSfondo = new Button();
             radCasuale = new RadioButton();
             label1 = new Label();
             radSequenziale = new RadioButton();
@@ -366,6 +367,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cambiaSfondo);
             groupBox1.Controls.Add(radCasuale);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(radSequenziale);
@@ -379,6 +381,17 @@
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "OPZIONI";
+            // 
+            // cambiaSfondo
+            // 
+            cambiaSfondo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cambiaSfondo.Location = new Point(25, 202);
+            cambiaSfondo.Name = "cambiaSfondo";
+            cambiaSfondo.Size = new Size(169, 43);
+            cambiaSfondo.TabIndex = 11;
+            cambiaSfondo.Text = "Cambia sfondo";
+            cambiaSfondo.UseVisualStyleBackColor = true;
+            cambiaSfondo.Click += cambiaSfondo_Click;
             // 
             // radCasuale
             // 
@@ -485,5 +498,6 @@
         private Label label1;
         private RadioButton radSequenziale;
         private RadioButton radCasuale;
+        private Button cambiaSfondo;
     }
 }
