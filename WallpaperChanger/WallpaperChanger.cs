@@ -19,7 +19,8 @@ namespace WallpaperChanger
         {
             Tiled,
             Centered,
-            Stretched
+            Stretched,
+            Fill
         }
 
         public static void Set(string imgPath, Style style)
@@ -42,6 +43,10 @@ namespace WallpaperChanger
                     break;
                 case Style.Stretched:
                     key.SetValue(@"WallpaperStyle", 2.ToString());
+                    key.SetValue(@"TileWallpaper", 0.ToString());
+                    break;
+                case Style.Fill:
+                    key.SetValue(@"WallpaperStyle", 10.ToString());
                     key.SetValue(@"TileWallpaper", 0.ToString());
                     break;
                 default:

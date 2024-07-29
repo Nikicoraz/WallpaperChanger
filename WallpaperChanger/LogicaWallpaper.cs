@@ -35,14 +35,14 @@ namespace WallpaperChanger
                     .ToArray();
                 if((Modalita)Convert.ToInt16(Settings.GetSetting(Settings.SettingName.MODALITA)) == Modalita.SEQUENZIALE)
                 {
-                    WallpaperManager.Set(files[precedente++ % files.Length], WallpaperManager.Style.Stretched);
+                    WallpaperManager.Set(files[precedente++ % files.Length], WallpaperManager.Style.Fill);
                 }
                 else
                 {
                     Random r = new();
                     int num;
                     while ((num = r.Next(0, files.Length)) == precedente) ;
-                    WallpaperManager.Set(files[num], WallpaperManager.Style.Stretched);
+                    WallpaperManager.Set(files[num], WallpaperManager.Style.Fill);
                 }
             }
             ultimoCambiamento = DateTime.Now;
@@ -61,12 +61,8 @@ namespace WallpaperChanger
                     dark = dark.AddMinutes(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.MINUTI_SERA)));
                     light = light.AddHours(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.ORE_MATTINA)));
                     light  = light.AddMinutes(Convert.ToInt32(Settings.GetSetting(Settings.SettingName.MINUTI_MATTINA)));
-                    if(now > light)
-                    {
-                        light = light.AddDays(1);
-                    }
                     // Dark
-                    if(now > dark && now < light)
+                    if (now > dark || now < light)
                     {
                         CambiaDesktop(Modo.dark);
                     }

@@ -45,7 +45,7 @@ namespace WallpaperChanger
             using (var fbd = new FolderBrowserDialog())
             {
                 DialogResult result = fbd.ShowDialog();
-                if(result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
+                if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
                 {
                     t_luce.Text = fbd.SelectedPath;
                     Settings.ChangeSetting(Settings.SettingName.WALLPAPER_LUCE_PATH, fbd.SelectedPath);
@@ -94,7 +94,7 @@ namespace WallpaperChanger
             t_buio.Text = Settings.GetSetting(Settings.SettingName.WALLPAPER_BUIO_PATH) ?? "";
             t_cambio.Value = Convert.ToDecimal(Settings.GetSetting(Settings.SettingName.TEMPO_CAMBIO) ?? "10");
             startup.Checked = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", false)
-                .GetValue(Constants.APPLICATION_NAME) != null ?true : false;
+                .GetValue(Constants.APPLICATION_NAME) != null ? true : false;
             radSequenziale.Checked = (LogicaWallpaper.Modalita)Convert.ToInt16(Settings.GetSetting(Settings.SettingName.MODALITA) ?? "0") == LogicaWallpaper.Modalita.SEQUENZIALE;
             radCasuale.Checked = (LogicaWallpaper.Modalita)Convert.ToInt16(Settings.GetSetting(Settings.SettingName.MODALITA) ?? "0") == LogicaWallpaper.Modalita.CASUALE;
         }
@@ -149,5 +149,6 @@ namespace WallpaperChanger
                 Settings.ChangeSetting(Settings.SettingName.MODALITA, Convert.ToInt16(LogicaWallpaper.Modalita.CASUALE).ToString());
             }
         }
+
     }
 }
